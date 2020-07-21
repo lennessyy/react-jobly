@@ -1,0 +1,32 @@
+.SignUp-Login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.btn-group .btn-primary{
+    background-color: #bae0f9;
+    border-color: #bae0f9
+}
+
+.SignUp-form{
+    padding: 2em 5em 2em 5em;
+    border: gainsboro 1px solid;
+}
+
+.btn-group .btn{
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.Signup-Login-buttons{
+    justify-content: flex-end;
+    width: 45vh;
+}
+
+.btn-group .btn-active{
+    background-color: #3282b8;
+    border-color: #3282b8;
+}
