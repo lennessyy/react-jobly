@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Routes from './Routes'
 import { BrowserRouter } from 'react-router-dom'
 import JoblyApi from './Api'
@@ -7,27 +7,40 @@ import TokenContext from './TokenContext'
 
 function App() {
   //Get token from local storage
-  // const [token, setToken] = useState(JSON.parse(localStorage.getItem('token')))
-  const [token, setToken] = useState()
+  const [token, setToken] = useState(localStorage.getItem('token'))
+  const [user, setUser] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
   // verify token if there is one
-  // if (token) {
-  //   JoblyApi.getCompanies(token).then(
-  //     console.log('Token verified')
-  //   ).catch(
-  //     setToken(null)
-  //   )
-  // }
-  debugger
-  return (
-    <div className="App">
-      <TokenContext.Provider value={{ token, setToken }}>
-        <BrowserRouter>
-          <Navbar />
-          <Routes />
-        </BrowserRouter>
-      </TokenContext.Provider>
-    </div>
-  );
+  useEffect(() => {
+    if (token) {
+      JoblyApi.getUser(token).then((res) => {
+        console.log('Token verified')
+        setUser(res.user)
+        setIsLoading(false)
+      }
+      ).catch((error) => {
+        console.log(error)
+        setToken(null)
+        setIsLoading(false)
+      }
+      )
+    }
+  }, [])
+
+  if (isLoading) {
+    return (<p>Loading</p>)
+  } else {
+    return (
+      <div className="App">
+        <TokenContext.Provider value={{ token, setToken, user, setUser }}>
+          <BrowserRouter>
+            <Navbar />
+            <Routes />
+          </BrowserRouter>
+        </TokenContext.Provider>
+      </div>
+    );
+  }
 }
 
 export default App;

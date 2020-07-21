@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import TokenContext from '../TokenContext'
-import SignUp from './SignUp'
+import { Redirect } from 'react-router-dom'
+import Login from './SignUp'
 import './Home.css'
 
 function Home() {
@@ -15,7 +16,7 @@ function Home() {
         )
     } else {
         return (
-            <SignUp />
+            <Redirect to='/login' />
         )
     }
 

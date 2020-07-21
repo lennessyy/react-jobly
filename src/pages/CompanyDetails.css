@@ -1,0 +1,12 @@
+.CompanyDetails{
+    margin-top: 3em;
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.CompanyDetails-intro{
+    width: 50vh;
+}

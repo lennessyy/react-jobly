@@ -2,7 +2,11 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Index from './pages/Index'
 import Home from './pages/Home'
+import SignUp from './pages/SignUp'
+import Login from './pages/Login'
+import Profile from './pages/Profile'
 import TokenContext from './TokenContext'
+import CompanyDetails from './pages/CompanyDetails'
 import JoblyApi from './Api'
 
 function Routes() {
@@ -21,7 +25,11 @@ function Routes() {
         if (token) {
             getData().then(() => {
                 setIsLoading(false)
-            })
+            }).catch(
+                (error) => {
+                    console.log(error)
+                }
+            )
         } else {
             setIsLoading(false)
             return
@@ -37,14 +45,23 @@ function Routes() {
             <Route exact path="/">
                 <Home />
             </Route>
+            <Route exact path="/signup">
+                <SignUp />
+            </Route>
+            <Route exact path="/login">
+                <Login />
+            </Route>
+            <Route exact path="/profile">
+                <Profile />
+            </Route>
             <Route exact path="/companies">
-                <Index items={companies} itemType='company' />
+                <Index items={companies} setCompanies={setCompanies} itemType='company' />
             </Route>
             <Route exact path="/companies/:id" >
-                Company details
+                <CompanyDetails />
             </Route>
             <Route exact path="/jobs">
-                <Index items={jobs} itemType='job' />
+                <Index items={jobs} itemType='job' setJobs={setJobs} />
             </Route>
             <Route exact path="/jobs/:id">
                 Job details

@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import './Navbar.css'
 import { Navbar, Nav, NavItem } from "reactstrap";
 import TokenContext from './TokenContext'
 
 function NavBar() {
     const { token, setToken } = useContext(TokenContext)
+    const history = useHistory()
     const logout = (e) => {
         e.preventDefault()
         localStorage.removeItem('token')
         setToken(null)
+        history.push('/')
     }
     if (token) {
         return (
@@ -36,9 +38,10 @@ function NavBar() {
             </div>
         );
     } else {
+        console.log('There is no token')
         return (
             <div>
-                <NavBar expand="md">
+                <Navbar expand="md">
                     <NavLink exact to="/" className="navbar-brand">
                         Jobly
                     </NavLink>
@@ -47,11 +50,10 @@ function NavBar() {
                             <NavLink to="/">Sign Up</NavLink>
                         </NavItem>
                     </Nav>
-                </NavBar>
+                </Navbar>
             </div>
         )
     }
-
 }
 
 export default NavBar;
