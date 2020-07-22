@@ -20,10 +20,11 @@ function App() {
       }
       ).catch((error) => {
         console.log(error)
-        setToken(null)
         setIsLoading(false)
       }
       )
+    } else {
+      setIsLoading(false)
     }
   }, [token])
 
