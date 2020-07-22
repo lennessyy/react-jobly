@@ -25,7 +25,7 @@ function App() {
       }
       )
     }
-  }, [])
+  }, [token])
 
   if (isLoading) {
     return (<p>Loading</p>)

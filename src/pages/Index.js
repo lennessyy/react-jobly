@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import Company from './Company'
 import Job from './Job'
 import { v4 as uuid } from 'uuid'
@@ -7,10 +7,6 @@ import JoblyApi from '../Api'
 import TokenContext from '../TokenContext'
 function Index({ items, itemType, setCompanies, setJobs }) {
     const { token } = useContext(TokenContext)
-    // const [search, setSearch] = useState('')
-    // const handleChange = e => {
-    //     setSearch(e.target.value)
-    // }
 
     const handleClick = async e => {
         e.preventDefault()

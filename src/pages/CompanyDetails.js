@@ -18,7 +18,7 @@ function CompanyDetails() {
             setCompany(data.company)
             setIsLoading(false)
         }).catch(error => console.log(error))
-    }, [])
+    }, [id, token])
 
 
     if (isLoading) return <p>Loading</p>

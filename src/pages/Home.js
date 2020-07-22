@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import TokenContext from '../TokenContext'
 import { Redirect } from 'react-router-dom'
-import Login from './SignUp'
 import './Home.css'
 
 function Home() {
