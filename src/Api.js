@@ -1,7 +1,7 @@
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
 
-const BASE_API_URL = "http://localhost:3001";
+const BASE_API_URL = process.env.ApiEndpoint || "http://localhost:3001";
 
 class JoblyApi {
     static async getCompanies(token, query = {}) {
