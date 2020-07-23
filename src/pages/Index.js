@@ -18,38 +18,30 @@ function Index({ items, itemType, setCompanies, setJobs }) {
             const result = await JoblyApi.getJobs(token, { search: search })
             setJobs(result.jobs)
         }
-
     }
+
+    let cards = []
     if (itemType === 'company') {
-        return (
-            <div className="Index">
-                <div className="Index-search">
-                    <form className="form-inline">
-                        <input className="form-control form-control-lg flex-grow-1" id="search" name="search" placeholder="Enter search term" />
-                        <button onClick={handleClick} type="submit" className="btn btn-lg btn-primary">Submit</button>
-                    </form>
-                </div>
-                <div className="Index-CardList">
-                    {items.map(i => <Company key={uuid()} company={i} />)}
-                </div>
-            </div>
-        )
-    } else if (itemType === 'job') {
-        return (
-            <div className="Index">
-                <div className="Index-search">
-                    <form className="form-inline">
-                        <input className="form-control form-control-lg flex-grow-1" id='search' name="search" placeholder="Enter search term" />
-                        <button onClick={handleClick} type="submit" className="btn btn-lg btn-primary">Submit</button>
-                    </form>
-                </div>
-                <div className="Index-CardList">
-                    {items.map(i => <Job key={uuid()} job={i} />)}
-                </div>
-            </div>
-        )
+        cards = items.map(i => <Company key={uuid()} company={i} />)
+    }
+    else {
+        cards = items.map(i => <Job key={uuid()} job={i} />)
     }
 
+    return (
+        <div className="Index">
+            <div className="Index-search">
+                <form className="form-inline">
+                    <input className="form-control form-control-lg flex-grow-1" id="search" name="search" placeholder="Enter search term" />
+                    <button onClick={handleClick} type="submit" className="btn btn-lg btn-primary">Submit</button>
+                </form>
+            </div>
+            <div className="Index-CardList">
+                {cards}
+            </div>
+        </div>
+    )
 }
+
 
 export default Index

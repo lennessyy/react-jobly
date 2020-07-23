@@ -8,6 +8,7 @@ import Profile from './pages/Profile'
 import TokenContext from './TokenContext'
 import CompanyDetails from './pages/CompanyDetails'
 import JoblyApi from './Api'
+import Loading from './pages/Loading'
 
 function Routes() {
     const [companies, setCompanies] = useState([])
@@ -22,6 +23,7 @@ function Routes() {
             setCompanies(result[0].companies)
             setJobs(result[1].jobs)
         }
+        //make API calls if a token exists and set isLoading to false if there is no token
         if (token) {
             getData().then(() => {
                 setIsLoading(false)
@@ -37,7 +39,7 @@ function Routes() {
     }, [token])
 
     if (isLoading) {
-        return (<p>Loading...</p>)
+        return (<Loading />)
     }
 
     return (
@@ -67,8 +69,8 @@ function Routes() {
                 Job details
             </Route>
 
-            <Route>
-                <div>
+            <Route path="/">
+                <div style={{ width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                     <h2>404</h2>
                     <p>Captain, I think we got lost.</p>
                 </div>

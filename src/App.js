@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Routes from './Routes'
-import { BrowserRouter } from 'react-router-dom'
 import JoblyApi from './Api'
 import Navbar from './Navbar'
 import TokenContext from './TokenContext'
+import Loading from './pages/Loading'
 
 function App() {
   //Get token from local storage
@@ -29,15 +29,13 @@ function App() {
   }, [token])
 
   if (isLoading) {
-    return (<p>Loading</p>)
+    return (<Loading />)
   } else {
     return (
       <div className="App">
         <TokenContext.Provider value={{ token, setToken, user, setUser }}>
-          <BrowserRouter>
-            <Navbar />
-            <Routes />
-          </BrowserRouter>
+          <Navbar />
+          <Routes />
         </TokenContext.Provider>
       </div>
     );

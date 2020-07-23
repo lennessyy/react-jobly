@@ -11,6 +11,8 @@
 }
 
 .Index-CardList{
-    margin: 2rem;
-    width: 75vw
+    width: 75%;
+    flex-flow: row wrap;
+    display: flex;
+    justify-content: space-between
 }

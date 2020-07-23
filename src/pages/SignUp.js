@@ -42,6 +42,8 @@ function SignUp() {
 
     return (
         <div className="SignUp-Login">
+            <h1>Jobly</h1>
+            <p>All the jobs in one, convenient place.</p>
             <div className="Signup-Login-buttons row">
                 <span className="btn-group" role="group" aria-label="Basic example">
                     <NavLink to="#" className="btn btn-primary btn-active">Sign Up</NavLink>
@@ -70,7 +72,7 @@ function SignUp() {
                     <input type="text" className="form-control" name="email" value={formData.email} id="email" onChange={handleChange} aria-describedby="emailHelp" />
                     <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Sign Up</button>
             </form>
         </div>
     )

@@ -39,6 +39,8 @@ function Login() {
 
     return (
         <div className="SignUp-Login">
+            <h1>Jobly</h1>
+            <p>All the jobs in one, convenient place.</p>
             <div className="Signup-Login-buttons row">
                 <span className="btn-group" role="group" aria-label="Basic example">
                     <NavLink to="/signup" className="btn btn-primary">Sign Up</NavLink>
@@ -54,7 +56,7 @@ function Login() {
                     <label htmlFor="password">Password</label>
                     <input required type="password" className="form-control" name="password" value={formData.password} id="password" onChange={handleChange} />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Login</button>
             </form>
         </div>
     )

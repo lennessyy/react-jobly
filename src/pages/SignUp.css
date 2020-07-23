@@ -24,6 +24,7 @@
 .Signup-Login-buttons{
     justify-content: flex-end;
     width: 45vh;
+    margin-top: 3em;
 }
 
 .btn-group .btn-active{
